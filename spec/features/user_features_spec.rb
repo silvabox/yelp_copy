@@ -47,13 +47,13 @@ context "things only users should be able to do" do
   it "should not let someone who is not logged in create a restaurant" do
     visit '/'
     click_link 'Add a restaurant'
-    expect(page).to have_content 'error'
+    expect(page).to have_content 'Log in'
   end
 
   it "should not let someone who is not logged in leave a review" do
     visit '/'
     click_link 'Review KFC'
-    expect(page).to have_content 'error'
+    expect(page).to have_content 'Log in'
   end
 
 end
