@@ -69,8 +69,8 @@ end
   end
 
   context 'editing restaurants' do
-
-    before{ Restaurant.create name: 'KFC' }
+    
+    before{ Restaurant.create name: 'KFC', user_id: current_user.id }
 
     scenario 'let a user edit a restaurant' do
       visit '/restaurants'

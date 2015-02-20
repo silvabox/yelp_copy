@@ -67,26 +67,26 @@ context 'changing restaurant data' do
     fill_in('Password', with: 'testtest')
     fill_in('Password confirmation', with: 'testtest')
     click_button('Sign up')
-    click_link 'Add a restaurant'
-    fill_in 'Name', with: 'KFC'
-    click_button 'Create Restaurant'
-    click_button('Sign out')
+    Restaurant.create(name: 'KFC', user_id: 1)
+    click_link('Sign out')
     click_link 'Sign up'
     fill_in('Email', with: 'alt_test@example.com')
-    fill_in('Password', with: 'alttest')
-    fill_in('Password confirmation', with: 'alttest')
+    fill_in('Password', with: 'alt_test')
+    fill_in('Password confirmation', with: 'alt_test')
     click_button('Sign up')
   end
 
   it 'a user should not be able to edit a restaurant created by another user' do
+    visit '/'
     click_link 'Edit KFC'
-    fill_in 'Name', with: 'Kentucky Fried Chicken'
-    click_button 'Update Restaurant'
-    expect(page).not_to have_content 'Kentucky Fried Chicken'
+    expect(page).to have_content "You cannot edit this restaurant"
+    expect(page).to have_content "KFC"
   end
 
   it 'a user should not be able to delete a restaurant created by another user' do
+    visit '/'
     click_link 'Delete KFC'
+    expect(page).to have_content 'You cannot delete this restaurant'
     expect(page).to have_content 'KFC'
   end
 end
