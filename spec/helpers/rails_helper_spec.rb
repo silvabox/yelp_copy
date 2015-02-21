@@ -20,26 +20,4 @@ describe ReviewsHelper, :type => :helper do
     end
   end
 
-# context '#time_ago' do
-  
-#   it 'returns 1 min ago if review left 1 minute ago' do
-
-#   end
-
-#   it 'returns 2 hours ago if review left 2 hours ago' do
-
-#   end
-
-#   it 'returns 4 horus ago if review left 4 days ago' do
-
-#   end
-
-#   it 'returns 1 month ago if review left 1 month ago' do
-
-#   end
-
-#   it 'returns 1 month ago if review left 1 month 4 days and 2 hours ago' do
-
-#   end
-# end
 end
