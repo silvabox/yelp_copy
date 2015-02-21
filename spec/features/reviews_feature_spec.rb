@@ -38,4 +38,9 @@ feature 'reviewing' do
     expect(page).to have_content('Average rating: ★★★★☆')
   end
 
+  scenario 'displays when review was left relative to time now' do
+    leave_review('so so', '3')
+    expect(page).to have_content('less than a minute ago')
+  end
+
 end 

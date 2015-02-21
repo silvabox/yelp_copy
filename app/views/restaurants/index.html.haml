@@ -16,6 +16,8 @@
             = review.thoughts
             %strong= review.rating 
             /5
+            = review.time_reviewed(review.created_at)
+            ago
             = link_to "Delete Review", restaurant_review_path(restaurant, review), method: :delete
 
     - else

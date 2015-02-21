@@ -15,30 +15,53 @@ describe Restaurant, :type => :model do
 
   describe '#average_rating' do
 
-  context 'no reviews' do
-    it 'returns "N/A" when there are no reviews' do
-      restaurant = Restaurant.create(name: 'The Ivy')
-      expect(restaurant.average_rating).to eq 'N/A'
+    context 'no reviews' do
+      it 'returns "N/A" when there are no reviews' do
+        restaurant = Restaurant.create(name: 'The Ivy')
+        expect(restaurant.average_rating).to eq 'N/A'
+      end
+    end
+
+    context '1 review' do
+      it 'returns that rating' do
+        restaurant = Restaurant.create(name: 'The Ivy')
+        restaurant.reviews.create(rating: 4)
+        expect(restaurant.average_rating).to eq 4
+      end
+    end 
+
+    context 'multiple reviews' do
+      it 'returns the average' do
+        restaurant = Restaurant.create(name: 'The Ivy')
+        restaurant.reviews.create(rating: 1)
+        restaurant.reviews.create(rating: 5)
+        expect(restaurant.average_rating).to eq 3
+      end
     end
   end
 
-  context '1 review' do
-    it 'returns that rating' do
-      restaurant = Restaurant.create(name: 'The Ivy')
-      restaurant.reviews.create(rating: 4)
-      expect(restaurant.average_rating).to eq 4
-    end
-  end 
+  describe '#time_ago' do
+    
+    context 'review left 1 minute ago' do
 
-  context 'multiple reviews' do
-    it 'returns the average' do
-      restaurant = Restaurant.create(name: 'The Ivy')
-      restaurant.reviews.create(rating: 1)
-      restaurant.reviews.create(rating: 5)
-      expect(restaurant.average_rating).to eq 3
+    end
+
+    context 'review left 2 hours ago' do
+
+    end
+
+    context 'review left 4 days ago' do
+
+    end
+
+    context 'review left 1 month ago' do
+
+    end
+
+    context 'review left 1 month 4 days and 2 hours ago' do
+
     end
   end
-end
 
 end
 
