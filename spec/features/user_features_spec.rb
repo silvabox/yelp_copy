@@ -113,5 +113,22 @@ feature 'User' do
       expect(page).to have_content 'You have already reviewed this restaurant'
       expect(page).not_to have_content 'Thoughts'
     end
+
+    it 'a user can only delete a review that they created' do
+      visit '/'
+      click_link 'Review KFC'
+      fill_in "Thoughts", with: "so so"
+      select '3', from: 'Rating'
+      click_button 'Leave Review'
+      click_link 'Sign out'
+      click_link 'Sign up'
+      fill_in('Email', with: 'alt_test@example.com')
+      fill_in('Password', with: 'alt_test')
+      fill_in('Password confirmation', with: 'alt_test')
+      click_button('Sign up')
+      click_link 'Delete Review'
+      expect(page).to have_content 'You cannot delete this review'
+      expect(page).to have_content 'so so'
+    end
   end
 end
