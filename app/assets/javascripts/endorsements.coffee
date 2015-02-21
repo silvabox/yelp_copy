@@ -4,9 +4,9 @@
 
 $ ->
   $('.endorsements-link').on 'click' (event) ->
-  event.preventDefault()
-
-  endorsementCount = $(this).siblings '.endorsements_count'
-
-  $.post this.href, ->
-  endorsementCount.text response.new_endorsement_count
+    event.preventDefault()
+  
+    endorsementCount = $(this).siblings '.endorsements_count'
+  
+    $.post this.href, ->
+      endorsementCount.text response.new_endorsement_count
