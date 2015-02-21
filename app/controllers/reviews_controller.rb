@@ -24,8 +24,6 @@ class ReviewsController < ApplicationController
   def destroy
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = @restaurant.reviews.find(params[:id])
-    p @restaurant
-    p @review
     if @review.user_id == current_user.id
       @review.destroy
       flash[:notice] = "Review deleted successfully"
