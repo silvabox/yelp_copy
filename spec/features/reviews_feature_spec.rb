@@ -28,6 +28,12 @@ feature 'reviewing' do
 
   scenario 'displays an average rating for all reviews' do
     leave_review('So so', '3')
+    click_link 'Sign out'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'alt_test@test.com'
+    fill_in 'Password', with: 'alt_test'
+    fill_in 'Password confirmation', with: 'alt_test'
+    click_button 'Sign up'
     leave_review('Great', '5')
     expect(page).to have_content('Average rating: 4')
   end
