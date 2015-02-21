@@ -22,7 +22,7 @@ feature 'reviewing' do
 
   scenario 'allows users to leave a review using a form' do
     leave_review("so so", '3')
-    expect(current_path).to eq '/restaurants'
+    expect(current_path).to eq '/'
     expect(page).to have_content('so so')
   end
 

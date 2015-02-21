@@ -16,16 +16,17 @@ class ReviewsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = @restaurant.reviews.create(review_params)
-    @review.time_reviewed(Time.now)
-    @review.update(:user_id => current_user.id)
-    redirect_to restaurants_path
+    @review = @restaurant.build_review(review_params, current_user)
+    if @review.save 
+      redirect_to '/' 
+    else
+      render 'new'
+    end
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = @restaurant.reviews.find(params[:id])
-    if @review.user_id == current_user.id
+    @review = Review.find(params[:id])
+    if @review.user == current_user
       @review.destroy
       flash[:notice] = "Review deleted successfully"
     else

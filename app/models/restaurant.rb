@@ -9,4 +9,12 @@ class Restaurant < ActiveRecord::Base
     reviews.average(:rating).to_i
   end
 
+  def build_review(params, user)
+    review = reviews.build(params)
+    review.time_reviewed(Time.now)
+    review.user = user
+    p review
+    review
+  end
+
 end

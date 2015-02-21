@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_sessions
   end
 
-  resources :restaurants do
-    resources :reviews
+  resources :restaurants, shallow: true do
+    resources :reviews do
+      resources :endorsements
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
