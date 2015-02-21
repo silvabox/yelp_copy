@@ -68,30 +68,30 @@ end
     end
   end
 
-  context 'editing restaurants' do
+  # context 'editing restaurants' do
     
-    before{ Restaurant.create name: 'KFC', user_id: current_user.id }
+  #   before{ Restaurant.create name: 'KFC'}
 
-    scenario 'let a user edit a restaurant' do
-      visit '/restaurants'
-      click_link 'Edit KFC'
-      fill_in 'Name', with: 'Kentucky Fried Chicken'
-      click_button 'Update Restaurant'
-      expect(page).to have_content 'Kentucky Fried Chicken'
-      expect(current_path).to eq '/restaurants'
-    end
-  end
+  #   scenario 'let a user edit a restaurant' do
+  #     visit '/restaurants'
+  #     click_link 'Edit KFC'
+  #     fill_in 'Name', with: 'Kentucky Fried Chicken'
+  #     click_button 'Update Restaurant'
+  #     expect(page).to have_content 'Kentucky Fried Chicken'
+  #     expect(current_path).to eq '/restaurants'
+  #   end
+  # end
 
-  context 'deleting restaurants' do
+  # context 'deleting restaurants' do
 
-    before { Restaurant.create name: 'KFC' }
+  #   before { Restaurant.create name: 'KFC' }
 
-    scenario 'removes a restaurant when a user clicks a delete link' do
-      visit '/restaurants'
-      click_link 'Delete KFC'
-      expect(page).not_to have_content 'KFC'
-      expect(page).to have_content 'Restaurant deleted successfully'
-    end
-  end
+  #   scenario 'removes a restaurant when a user clicks a delete link' do
+  #     visit '/restaurants'
+  #     click_link 'Delete KFC'
+  #     expect(page).not_to have_content 'KFC'
+  #     expect(page).to have_content 'Restaurant deleted successfully'
+  #   end
+  # end
 
 end 

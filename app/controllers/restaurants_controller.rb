@@ -29,7 +29,6 @@ class RestaurantsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:id])
-    p current_user
     if @restaurant.user_id == current_user.id
       render 'edit'
     else
