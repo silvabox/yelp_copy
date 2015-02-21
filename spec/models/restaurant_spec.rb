@@ -40,29 +40,6 @@ describe Restaurant, :type => :model do
     end
   end
 
-  describe '#time_ago' do
-    
-    context 'review left 1 minute ago' do
-
-    end
-
-    context 'review left 2 hours ago' do
-
-    end
-
-    context 'review left 4 days ago' do
-
-    end
-
-    context 'review left 1 month ago' do
-
-    end
-
-    context 'review left 1 month 4 days and 2 hours ago' do
-
-    end
-  end
-
 end
 
 

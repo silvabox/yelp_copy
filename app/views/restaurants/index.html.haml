@@ -18,7 +18,8 @@
             /5
             = review.time_reviewed(review.created_at)
             ago
-            %p= pluralize review.endorsements.count, 'endorsement'
+            = link_to "Endorse", review_endorsements_path(review), class: 'endorsements-link'
+            %span.endorsements_count= review.endorsements.count
             = link_to "Delete Review", review_path(review), method: :delete
 
     - else
